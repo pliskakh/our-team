@@ -25,6 +25,12 @@ body {
 }
 
 /* Typography */
+
+h1, h2, h3 ,h4 ,h5 ,h6 {
+	margin: 0;
+}
+
+
 a,
 input[type="submit"],
 input[type="button"],
@@ -44,8 +50,6 @@ button,
 	border: 1px solid $primary-color;
 	text-decoration: none;
 	text-transform: uppercase;
-
-	
 }
 input[type="submit"]:hover,
 input[type="button"]:hover,
@@ -169,21 +173,46 @@ textarea {
 	&__name {
 		font: 900 36px/1 $header-font;
 		color: $secondary-color;
+		padding-bottom: 65px;
+		position: relative;
+		&:after{
+			content: "";
+			display: block;
+			position: absolute;
+			width: 100px;
+			border: 1px solid $primary-color;
+			left: 50%;
+			margin-left: -50px;
+			bottom: 40%;
+		}
 	}
 	&__position{
 		font: 400 24px/1 $body-font;
 		color: $secondary-color;
+		padding-bottom: 30px;
 	}
 	&__content {
+		position: relative;
 
 		p {
-			
+			margin: 0;
+			padding-bottom: 50px;
+		}
+		&:after{
+			content: "";
+			position: absolute;
+			background: linear-gradient(to right, #ffcc00 0%,#febf01 15%,#ffffff 15%,#ffffff 25%,#ffcc00 25%,#ffcc00 25%,#ffcc00 75%,#ffcc00 75%,#ffffff 75%,#ffffff 85%,#ffcc00 85%,#ffcc00 100%);
+			width: 50px;
+			height: 4px;
+			transform: translate(-25px,-25px);
 		}
 	}
 }
 
 .ba-socials {
-	a {
+	padding-bottom: 30px;
+	
+	.hvr-pulse {
 		color: #ccc;
 		display: inline-block;
 		border-radius: 50%; 
@@ -191,9 +220,16 @@ textarea {
 		width: 30px;
 		height: 30px;
 		padding: 5px;
+		vertical-align: middle;
+		transform: perspective(1px) translateZ(0);
+  		box-shadow: 0 0 1px transparent;
 		
-		&:hover{
+		&:hover, &:focus, &:active{
 			color: $primary-color;
+			animation-name: hvr-pulse;
+			animation-duration: 1s;
+			animation-timing-function: linear;
+			animation-iteration-count: infinite;
 		}
 		
 		svg {
@@ -205,15 +241,106 @@ textarea {
 }
 
 
+/* Pulse */
+@-webkit-keyframes hvr-pulse {
+  25% {
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(0.9);
+  }
+}
+@keyframes hvr-pulse {
+  25% {
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(0.9);
+  }
+}
+
+.hvr-sweep-to-right{
+	vertical-align: middle;
+	transform: perspective(1px) translateZ(0);
+	box-shadow: 0 0 1px transparent;
+	position: relative;
+	transition-property: color;
+	transition-duration: 0.3s;
+	
+	&:before{
+		content: "";
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: $primary-color;
+		transform: scaleX(0);
+		transform-origin: 0 50%;
+		transition-property: transform;
+		transition-duration: 0.3s;
+		transition-timing-function: ease-out;
+	}
+	&:hover,&:focus,&:active{
+		color: $reverse-color;
+		
+		&:before{
+			transform: scaleX(1);
+		}
+	}
+}
+
+.ba-arrow{
+	position: relative;
+	top: -300px;  
+	
+	&--left, &--right {
+		vertical-align: middle;
+		display: inline-block;
+		height: 24px;
+		width: 24px;
+		
+		svg {
+			height: 100%;
+			width: 100%;
+			fill: $primary-color;
+			
+			&:hover {
+			fill: darken($primary-color,5%);
+			cursor: pointer;
+			}
+		}
+		
+	}
+}
+
+.ba-dots{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	
+	&__items {
+		vertical-align: middle;
+		background-color: $primary-color; 
+		display: inline-block;
+		border: 1px solid $primary-color;
+		border-radius: 50%; 
+		width: 9px;
+		height: 9px;
+		cursor: pointer;
+		
+		&:hover, &--active{
+			width: 10px;
+			height: 10px;
+			background-color: $reverse-color; 
+		}
+	}
+}
 
 
 
 
-/* .brrr{
-	background-color: $primary-color;
-	@include filter-gradient($primary-color, $primary-color, horizontal);
-	@include background-image(linear-gradient(left, $primary-color 0%,$primary-color 15%,$reverse-color 15%,$reverse-color 25%,$primary-color 25%,$primary-color 25%,$primary-color 75%,$primary-color 75%,$reverse-color 75%,$reverse-color 85%,$primary-color 85%,$primary-color 100%));
-	}  */
 	
 
 
