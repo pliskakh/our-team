@@ -743,6 +743,9 @@ select {
     transform: scale(0.9); } }
 
 .hvr-sweep-to-right {
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
   vertical-align: middle;
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
