@@ -1,5 +1,6 @@
 @import "normalize";
 @import "layout";
+@import "slick";
 
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,500|Roboto:400,900|Open+Sans:700');
 
@@ -292,64 +293,76 @@ textarea {
 	}
 }
 
-.ba-arrow{
-	position: relative;
-	top: -300px;  
-	
-	&--left, &--right {
-		vertical-align: middle;
-		display: inline-block;
-		height: 24px;
-		width: 24px;
-		
-		svg {
-			height: 100%;
-			width: 100%;
-			fill: $primary-color;
-			
-			&:hover {
-			fill: darken($primary-color,5%);
-			cursor: pointer;
-			}
-		}
-		
+.slick-arrow{
+	border: none;
+	background: none;
+	border-radius: 0;
+	padding: 0;
+
+	position: absolute;
+	line-height: 0;
+	font-size: 0;
+	cursor: pointer;
+	top: 50%;
+	margin-top: -21px;
+	outline: none;
+	color: $primary-color;
+	&:hover{
+		color: lighten($primary-color, 30%);
+	}
+	svg{
+		display: block;
+		height: 42px;
+		width: 20px;
+		fill: currentColor;
+	}	
+}
+
+.ba-slider-prev{
+	left: 0;
+}
+
+.ba-slider-next{
+	right: 0;
+}
+
+.ba-slide{
+	&:focus{
+		outline: none;
 	}
 }
 
-.ba-dots{
+.slick-dots {
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	
-	&__items {
-		vertical-align: middle;
-		background-color: $primary-color; 
+	text-align: center;
+
+	li{
 		display: inline-block;
+		margin: 0 5px;
+	}
+
+	button{
+		border: none;
+		background: transparent;
+		display: block;
+		width: 10px;
+		height: 10px;
+		background-color: $primary-color;
 		border: 1px solid $primary-color;
-		border-radius: 50%; 
-		width: 9px;
-		height: 9px;
+		padding: 0;
+		border-radius: 50%;
+		outline: none;
+		line-height: 0;
+		font-size: 0;
+		color: transparent;
 		cursor: pointer;
-		
-		&:hover, &--active{
-			width: 10px;
-			height: 10px;
-			background-color: $reverse-color; 
+	}
+
+	.slick-active{
+		button{
+			background: transparent;
 		}
 	}
 }
-
-
-
-
-	
-
-
-
-
-
-
-
-
-
-
